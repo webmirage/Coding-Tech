@@ -1,0 +1,180 @@
+// Import Files
+
+// Import Global Rules
+@use './sass/layout/global-rules' as *;
+
+// Import Colors Variables
+@use './sass/variables/colors' as *;
+
+// Import Constant Variables
+@use './sass/variables/constant' as *;
+
+// Import Buttons
+@use './sass/components/buttons';
+
+// Import Links
+@use './sass/components/links';
+
+// Import Headings
+@use './sass/components/heading';
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+
+// Import Header
+@use './sass/layout/header.scss' as *;
+
+// Import Functions
+@use './sass/helpers/functions' as *;
+
+// Import Services Page
+@use './sass/pages/services';
+
+// Import About Page
+@use './sass/pages/about';
+
+// Import Footer
+@use './sass/layout/footer';
+
+.landing {
+    position: relative;
+    width: 100%;
+    height: calcHeaderWidth(119px);
+    @include flexAlign(center, space-between);
+}
+
+
+.landing .section-right, .landing .section-left {
+    position: relative;
+    img {
+        width: 100%;
+    }
+}
+.landing .section-right {
+    img {
+        width: 400px;
+        @include animeInfo(upDown, 3s)
+    }
+}
+
+.landing .section-left {
+    img {
+        width: calcHeaderWidth(119px);
+    }
+    article {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        margin-left: 30px;
+        h1 {
+              margin-bottom: 20px;
+              font-size: 28px;
+        }
+        p {
+            width: 65%;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        button {
+            @include btn(50px, 0);
+            margin-top: 20px;
+            background: linear-gradient(to right, $main-color, #3eb3f7);
+
+        }
+    }
+}
+
+@include animation(upDown) {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@include breakPoints(medium) {
+    .landing {
+        .section-left {
+            article {
+                h1 {
+                    font-size: 21px;
+                }
+            }
+            img {
+                width: 480px;
+            }
+        }
+        .section-right {
+            img {
+                width: 280px;
+            }
+        }
+    }
+}
+
+
+@include breakPoints(small) {
+    .landing {
+      flex-direction: column;
+      .section-left {
+        width: 100%;
+        article {
+            h1 {
+                font-size: 23px;
+            }
+        }
+        img {
+            width: 550px;
+        }
+      }
+      .section-right {
+        display: none;
+      }
+    }
+}
+
+@include breakPoints(mobile) {
+    .landing {
+        height: auto;
+        margin-bottom: 80px;
+        flex-direction: column;
+        .section-left {
+            display: none;
+        }
+        .section-right {
+            margin-top: 33px;
+            img {
+                width: 250px;
+            }
+        }
+    }
+}
+
+.section-left.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transition: 1.5s;
+    transform: translateX(-10%);
+}
+.section-left.show {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0);
+}
+
+.scroll {
+    right: 0;
+    position: fixed;
+    bottom: 0;
+    margin: 18px 24px;
+    border-radius: 10px;
+    height: 38px;
+    width: 38px;
+    background: linear-gradient(to right, $main-color, #3eb3f7);
+    display: none;
+}
+@include breakPoints(mobile) {
+    .scroll {
+        margin: 24px 50px;
+    }
+}

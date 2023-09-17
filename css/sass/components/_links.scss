@@ -1,0 +1,16 @@
+// Import Variables
+@use './sass/variables/colors' as *;
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+a {
+    text-decoration: none;
+    color: #383838;
+    transition: 0.4s;
+}
+
+a.active,
+a:hover {
+    color: $alt-color;
+}

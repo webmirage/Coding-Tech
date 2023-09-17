@@ -1,0 +1,96 @@
+// Import Colors Variables
+@use './sass/variables/colors' as *;
+
+// Import Constant Variables
+@use './sass/variables/constant' as *;
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+// Import Headings
+@use './sass/components/heading' as *;
+
+
+.services {
+    padding: $main-padding;
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+        gap: 30px;
+        margin-top: 40px;
+        .box {
+            box-shadow: 0px 0px 6px 2px #eeeeee;
+            padding: 30px 20px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 8px;
+            border-top-right-radius: 50px;
+            transition: 0.4s;
+            &.hidden {
+                opacity: 0;
+                filter: blur(1px);
+                transition: 1.2s;
+                transform: translateY(-50%);
+            }
+            &.show {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translateY(0);
+            }
+            &:hover .information i {
+                @include animeInfo(arrow-right, 0.6s)
+            }
+            &:hover {
+                transform: translateY(-5px);
+            background-image: url(../imgs/service-bg.jpg);
+            background-position: right top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+            i, .information a, p {
+                color: #fff;
+            }
+            }
+            .icon {
+                color: $main-color;
+                font-size: 39px;
+            }
+            article {
+                margin: 18px 0;
+                span {
+                    font-weight: 800;
+                    font-size: 19px;
+                    display: block;
+                    margin-bottom: 12px;
+                }
+                p {
+                    color: $stroke-color;
+                    line-height: 2;
+                    font-size: 13px;
+                }
+            }
+            .information {
+                @include flexAlign(center, space-between);
+                border-top: 1px solid #f4f4f4;
+                padding-top: 12px;
+                    a {
+                        color: $main-color;
+                    }
+                    color: $main-color;
+                    font-size: 14px;
+            }
+        }
+    }
+}
+
+@include animation(arrow-right) {
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@include breakPoints(mobile) {
+    .services {
+        padding: 0;
+    }
+}

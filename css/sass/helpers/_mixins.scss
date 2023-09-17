@@ -1,0 +1,106 @@
+// Import Colors Variables
+@use './sass/variables/colors' as *;
+
+
+// Mixin Button Radius & Margin
+@mixin btn($radius, $margin:null) {
+    border-radius: $radius;
+    transition: 0.4s;
+    @if $margin != null {
+        margin: $margin;
+    } @else {
+        margin: 0;
+    };
+}
+
+// Width Height & Raius Element Mixin
+
+@mixin radiusDimentions($dimensions) {
+    width: $dimensions;
+    height: $dimensions;
+    border-radius: 50%;
+}
+
+// Element Animation Mixin
+
+@mixin animeInfo($name , $duration) {
+    animation: $name $duration infinite;
+}
+
+@mixin animation($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+
+// Media Query BreakPoint Mixin
+@mixin breakPoints($name) {
+    @if $name == 'mobile' {
+        @media (max-width: 576px) {
+            @content;
+        }
+    } @else if $name == 'small' {
+        @media (min-width: 578px) and (max-width: 767px) {
+            @content;
+        }
+    } @else if $name == 'medium' {
+        @media  (min-width: 768px) and (max-width: 991px) {
+            @content;
+        }
+    } @else if $name == 'large' {
+        @media (min-width: 992px) and (max-width: 1400px) {
+            @content;
+        }
+    } @else if $name == 'xlarge' {
+        @media (min-width: 1401px) {
+            @content;
+        }
+    }
+}
+
+// Flex Mixins
+
+@mixin flexAlign($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+// Gradient Mixin
+
+@mixin textgradient($direction, $secColor) {
+    background: linear-gradient(to $direction, $main-color, $secColor);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin hoverBeforeAnim() {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0%; /* Start at the center */
+        width: 0;
+        height: 2px;
+        background-color: $main-color;
+        transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+        transform: translateX(-50%); /* Adjust for center alignment */
+      }
+      
+      &:hover::before {
+        width: 100%; /* Expand to full width */
+        left: 50%; /* Move to the left edge */
+      }
+}
+
+// ON Hover Transform
+@mixin hoverTransform($quantity) {
+    transition: 0.4s;
+    &:hover {
+        transform: translateY($quantity);
+    }
+}

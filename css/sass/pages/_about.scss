@@ -1,0 +1,151 @@
+// Import Colors Variables
+@use './sass/variables/colors' as *;
+
+// Import Constant Variables
+@use './sass/variables/constant' as *;
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+// Import Headings
+@use './sass/components/heading' as *;
+
+.about {
+    padding: $main-padding;
+    .container {
+       @include flexAlign(center, space-between);
+       padding: 20px;
+       .text-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+            article {
+                margin-left: 10px;   
+                h2 {
+                    font-size: 28px;
+                    letter-spacing: 1px;
+                    margin-bottom: 10px;
+                    @include textgradient(top,#a328ec);
+                }
+                p {
+                    color: $stroke-color;
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                    line-height: 1.8;
+                    text-transform: capitalize;
+                }
+                button {
+                   margin-top: 14px;
+                   font-size: 15px;
+                   border-radius: 20px;
+                   padding: 10px 14px;
+                   background: linear-gradient(to top, #03a1ef, #9a71ee);
+                   transition: 0.4s;
+                   &:hover {
+                    transform: translateY(-5px);
+                   }
+                   i {
+                    font-size: 15px;
+                    margin-left: 2px;
+                   }
+                }
+            }
+    }
+    .img-container { 
+        img {
+            width: 550px;
+            &.hidden {
+                opacity: 0;
+                filter: blur(1px);
+                transition: 1.5s;
+                transform: translateX(10%);
+            }
+            &.show {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translateX(0);
+            }
+        }
+    }
+    }
+}
+@include breakPoints(mobile) {
+    .about {
+        p {
+            margin-bottom: 20px;
+        }
+        .container {
+            flex-direction: column;
+            article {
+                h2 {
+                    font-size: 27px !important;
+                }
+                p {
+                    font-size: 13px;
+                }
+            }
+            .img-container {
+                img {
+                    width: 330px;
+                }
+            }
+        }
+    }
+}
+
+
+@include breakPoints(small) {
+    .about {
+        p {
+            margin-bottom: 20px;
+        }
+        .container {
+            flex-direction: column;
+            article {
+                h2 {
+                    font-size: 27px !important;
+                }
+                p {
+                    font-size: 13px;
+                }
+            }
+            .img-container {
+                img {
+                    width: 400px;
+                }
+            }
+        }
+    }
+}
+
+@include breakPoints(medium) {
+    .about {
+        p {
+            margin-bottom: 20px;
+        }
+        .container {
+            flex-direction: column;
+            article {
+                h2 {
+                    font-size: 27px !important;
+                }
+                p {
+                    font-size: 13px;
+                }
+            }
+            .img-container {
+                img {
+                    width: 400px;
+                }
+            }
+        }
+    }
+}
+
+@include breakPoints(large) {
+    .img-container {
+        img {
+            width: 450px !important;
+        }
+    }
+}

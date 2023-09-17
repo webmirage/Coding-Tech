@@ -1,0 +1,7 @@
+// Import Header
+@use './sass/layout/header.scss' as *;
+
+// Calculate Header Width
+@function calcHeaderWidth($element) {
+    @return calc(100vh - $element);
+}

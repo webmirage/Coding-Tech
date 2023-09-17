@@ -1,0 +1,46 @@
+// Import Variables
+@use './sass/variables/colors' as *;
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+// Import Constant Variables
+@use './sass/variables/constant' as *;
+
+h2.designed {
+    font-size: $globalSize;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    margin-bottom: 18px;
+    position: relative;
+    &::before, &::after {
+        content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #03a1ef;
+    bottom: -10px;
+    transform: translate(-50%,-50%);
+    }
+    &::before {
+    left: 48%;
+
+    }
+    &::after {
+        left: 52%;
+    }
+    + p {
+        color: $stroke-color;
+        text-align: center;
+    }
+    span {
+        color: $main-color;
+    }
+}
+
+@include breakPoints(mobile) {
+    h2.designed {
+        font-size: 27px;
+    }
+}

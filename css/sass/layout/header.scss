@@ -1,0 +1,97 @@
+// Import Colors
+@use './sass/variables/colors' as *;
+
+// Import Mixins
+@use './sass/helpers/mixins' as *;
+
+header {
+    box-shadow: 0px 0px 6px #e1e1e1;
+    .container { 
+        @include flexAlign(center,space-between);
+        height: 119px;
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+           @include textgradient(left,#fe005f);
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            font-size: 18px;
+            margin-left: 6px;
+            margin-top: 3px;
+        
+        }
+        ul.list {
+            display: flex;
+            li {
+                margin: 0 12px;
+                @include hoverBeforeAnim();
+                i {
+                    font-size: 15px
+                }
+            }
+        }
+        .special {
+            @include btn(30px, 0);
+            background: linear-gradient(to right, $main-color, #0ddee6);
+            @include hoverTransform(-5px)
+        }
+    }
+}
+
+
+
+@include breakPoints(mobile) {
+    header .container {
+       flex-direction: column;
+       .logo {
+        font-size: 20px;
+        margin-top: 2px;
+        i {
+            font-size: 17px;
+        }
+       }
+       ul.list {
+        li {
+            margin: 0 6px;
+            font-size: 14px;
+            i {
+                font-size: 13px;
+            }
+        }
+       }
+       button.special {
+        margin-bottom: 6px;
+    font-size: 14px;
+       }
+    }
+}
+
+
+
+@include breakPoints(small) {
+    header .container {
+       flex-direction: column;
+       .logo {
+        font-size: 22px;
+        margin-top: 2px;
+        i {
+            font-size: 18px;
+        }
+       }
+       ul.list {
+        li {
+            margin: 0 16px;
+            font-size: 16px;
+            i {
+                font-size: 14px;
+            }
+        }
+       }
+       button.special {
+        margin-bottom: 6px;
+    font-size: 14px;
+       }
+    }
+}
